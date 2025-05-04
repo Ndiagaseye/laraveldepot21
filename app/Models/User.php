@@ -2,56 +2,49 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $fillable = [
-        'prenom',
-        'nom',
-        'telephone',
-        'email',
-        'password',
-        'profil'
+        'prenom', 'nom', 'telephone', 'email', 'password', 'profil', 'is_active', 'last_login_at'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'last_login_at' => 'datetime',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    // Vérification des rôles
+    public function isSuperAdmin()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->profil === 'SUPER_ADMIN';
     }
 
-    public function participant()
+    public function isGerant()
+    {
+        return $this->profil === 'GERANT';
+    }
+
+    public function isParticipant()
+    {
+        return $this->profil === 'PARTICIPANT';
+    }
+
+    // Méthode pour vérifier si l'utilisateur est actif
+    public function isActive()
+    {
+        return $this->is_active;
+    }
+
+    public function gerant()
 {
-    return $this->hasOne(Participant::class, 'idUser');
+    return $this->hasOne(Gerant::class);
 }
 
 }

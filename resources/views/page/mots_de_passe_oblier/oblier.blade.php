@@ -49,16 +49,16 @@
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
-                                        <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                        <a href="{{ route('page.connexion.connexion') }}" class="btn btn-primary btn-user btn-block">
                                             Reset Password
                                         </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('inscription.index') }}">Create an Account!</a>
+                                        <a class="small" href="{{ route('page.inscription.index') }}">Create an Account!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('connexion.conexion') }}">Already have an account? Login!</a>
+                                        <a class="small" href="{{ route('page.connexion.conexion') }}">Already have an account? Login!</a>
                                     </div>
                                 </div>
                             </div>

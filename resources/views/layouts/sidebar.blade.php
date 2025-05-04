@@ -82,22 +82,13 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
                 <a class="collapse-item" href="{{ route('connexion.conexion') }}">Connecter</a>
-                <a class="collapse-item" href="{{ route('inscription.index') }}">Inscrire</a>
+                <a class="collapse-item" href="{{ route('inscription.ajoutGerant') }}">Inscrire</a>
                 <a class="collapse-item" href="{{route('mots_de_passe_oblier.changer')}}">Mot De Passe</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item active" href="blank.html">Blank Page</a>
-            </div>
+                </div>
         </div>
     </li>
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>
+
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
